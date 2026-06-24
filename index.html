@@ -342,6 +342,46 @@
     .footer a:hover { color: var(--text); text-decoration: underline; }
     .footer .footer-links { margin-top: 4px; }
 
+    /* ── Notificação de vendas ──────────────────────────── */
+    .sale-toast {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 70;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 330px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 18px 12px 12px;
+      box-shadow: 0 18px 44px -18px rgba(40, 30, 10, .32);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(24px);
+      transition: opacity .45s ease, transform .45s ease, visibility .45s ease;
+    }
+    .sale-toast.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .sale-avatar {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-a), var(--gold-b));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .sale-text { font-size: 13px; color: var(--muted); line-height: 1.35; }
+    .sale-text strong { display: block; color: var(--text); font-weight: 700; font-size: 14px; }
+    .sale-time { margin-top: 3px; font-size: 11px; color: #a8a092; }
+
     /* ── Popup de vídeo ─────────────────────────────────── */
     .vmodal {
       position: fixed;
@@ -419,6 +459,7 @@
       .about { padding-left: 1.35em; padding-right: 1.35em; }
       .editions-grid { grid-template-columns: 1fr; }
       .ed-card { aspect-ratio: 16 / 9; }
+      .sale-toast { left: 12px; right: 12px; bottom: 12px; max-width: none; }
       .editions h2 { max-width: 18ch; margin-left: auto; margin-right: auto; }
     }
   </style>
@@ -508,6 +549,49 @@
       <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a>
     </div>
   </footer>
+
+  <!-- Notificação de vendas -->
+  <div class="sale-toast" id="saleToast" role="status" aria-live="polite">
+    <div class="sale-avatar" id="saleAvatar">A</div>
+    <div class="sale-text">
+      <strong id="saleName">Ana Silva</strong>
+      acabou de comprar a Power Academy
+      <div class="sale-time" id="saleTime">há poucos segundos</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var nomes = ["Ana","Maria","Juliana","Camila","Fernanda","Patrícia","Beatriz","Larissa",
+        "Carolina","Mariana","Aline","Bruna","Gabriela","Letícia","Vanessa","Renata","Tatiane",
+        "Amanda","Débora","Priscila","Jéssica","Rafaela","Isabela","Natália","Sabrina","Carla",
+        "Eduarda","Manuela","Helena","Bianca","Luana","Daniela","Viviane","Simone","Adriana"];
+      var sobrenomes = ["Silva","Santos","Oliveira","Souza","Costa","Almeida","Pereira","Lima",
+        "Carvalho","Ribeiro","Gomes","Martins","Rocha","Barbosa","Fernandes","Araújo","Melo",
+        "Cardoso","Nascimento","Moreira","Teixeira","Correia","Pinto","Cavalcanti","Monteiro"];
+      var tempos = ["agora mesmo","há poucos segundos","há 1 minuto","há 2 minutos","há 3 minutos","há 4 minutos"];
+
+      var toast = document.getElementById("saleToast");
+      var elName = document.getElementById("saleName");
+      var elAvatar = document.getElementById("saleAvatar");
+      var elTime = document.getElementById("saleTime");
+
+      function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+      function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+      function showOne() {
+        var nome = pick(nomes) + " " + pick(sobrenomes);
+        elName.textContent = nome;
+        elAvatar.textContent = nome.charAt(0);
+        elTime.textContent = pick(tempos);
+        toast.classList.add("show");
+        setTimeout(function () { toast.classList.remove("show"); }, 5000);
+        setTimeout(showOne, randInt(8000, 16000)); // próximo em tempo aleatório
+      }
+
+      setTimeout(showOne, 4000); // primeira após 4s
+    })();
+  </script>
 
   <!-- Popup de vídeo -->
   <div class="vmodal" id="vmodal" role="dialog" aria-modal="true">
