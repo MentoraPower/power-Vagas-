@@ -57,8 +57,67 @@
       flex-direction: column;
       align-items: center;
       padding: clamp(20px, 5vw, 56px) 18px;
+      padding-top: 84px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navbar / contagem ──────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: #14110f;
+      background-image: linear-gradient(180deg, #1b1714 0%, #110e0c 100%);
+      border-bottom: 1px solid rgba(231, 211, 163, .18);
+      box-shadow: 0 6px 20px -10px rgba(0, 0, 0, .5);
+    }
+
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 2vw, 18px);
+      padding: 10px 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-label {
+      color: #efe7d8;
+      font-size: clamp(12px, 2vw, 14px);
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    .countdown { display: flex; align-items: center; gap: 6px; }
+
+    .cd-seg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(231, 211, 163, .1);
+      border: 1px solid rgba(231, 211, 163, .16);
+      border-radius: 9px;
+      padding: 4px 8px;
+      min-width: 40px;
+    }
+    .cd-num {
+      font-size: clamp(15px, 2.4vw, 18px);
+      font-weight: 700;
+      color: #f0d9a0;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .cd-unit {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #a9a194;
+      margin-top: 3px;
     }
 
     .wrapper {
@@ -327,7 +386,7 @@
     .vmodal-close:hover { background: rgba(0, 0, 0, .85); }
 
     @media (max-width: 480px) {
-      body { padding-left: 26px; padding-right: 26px; padding-top: 52px; }
+      body { padding-left: 26px; padding-right: 26px; padding-top: 96px; }
       .btn { padding: 16px 18px; }
       .headline, .headline h1, .headline p { text-align: center; }
       .editions-grid { grid-template-columns: 1fr; }
@@ -337,6 +396,19 @@
   </style>
 </head>
 <body>
+  <!-- Navbar com contagem regressiva -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <span class="nav-label">Vagas encerram em</span>
+      <div class="countdown" id="countdown" aria-label="Contagem regressiva">
+        <div class="cd-seg"><span class="cd-num" id="cdD">00</span><span class="cd-unit">dias</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdH">00</span><span class="cd-unit">horas</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdM">00</span><span class="cd-unit">min</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdS">00</span><span class="cd-unit">seg</span></div>
+      </div>
+    </div>
+  </header>
+
   <main class="wrapper">
     <!-- Cabeçalho -->
     <header class="headline">
@@ -434,6 +506,35 @@
       closeBtn.addEventListener("click", close);
       modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
       document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+      // ── Contagem regressiva até a próxima sexta-feira 18h ──
+      function nextDeadline() {
+        var d = new Date();
+        d.setHours(18, 0, 0, 0);
+        var diff = (5 - d.getDay() + 7) % 7; // 5 = sexta
+        if (diff === 0 && Date.now() > d.getTime()) diff = 7;
+        d.setDate(d.getDate() + diff);
+        return d.getTime();
+      }
+
+      var target = nextDeadline();
+      var elD = document.getElementById("cdD");
+      var elH = document.getElementById("cdH");
+      var elM = document.getElementById("cdM");
+      var elS = document.getElementById("cdS");
+      var pad = function (n) { return String(n).padStart(2, "0"); };
+
+      function tick() {
+        var rem = target - Date.now();
+        if (rem <= 0) { target = nextDeadline(); rem = target - Date.now(); }
+        var s = Math.floor(rem / 1000);
+        elD.textContent = pad(Math.floor(s / 86400));
+        elH.textContent = pad(Math.floor((s % 86400) / 3600));
+        elM.textContent = pad(Math.floor((s % 3600) / 60));
+        elS.textContent = pad(s % 60);
+      }
+      tick();
+      setInterval(tick, 1000);
     })();
   </script>
 </body>
