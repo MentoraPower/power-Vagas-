@@ -202,7 +202,7 @@
       color: var(--muted);
       font-size: clamp(15px, 2.2vw, 17px);
       text-align: center;
-      max-width: 880px;
+      max-width: 720px;
       margin: 0 auto 14px;
     }
     .about p:last-child { margin-bottom: 0; }
@@ -270,39 +270,51 @@
       position: relative;
       width: 100%;
       max-width: 960px;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8);
       transform: scale(.96);
       transition: transform .25s ease;
     }
     .vmodal.open .vmodal-box { transform: scale(1); }
 
-    .vmodal-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .vmodal-ratio {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8);
+    }
+    .vmodal-ratio iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
 
     .vmodal-close {
       position: absolute;
-      top: -14px;
-      right: -14px;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
       width: 40px;
       height: 40px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
-      background: #fff;
-      color: #1a1409;
-      font-size: 22px;
+      background: rgba(0, 0, 0, .55);
+      color: #fff;
+      font-size: 24px;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 18px -4px rgba(0, 0, 0, .6);
+      transition: background .15s ease;
     }
+    .vmodal-close:hover { background: rgba(0, 0, 0, .85); }
 
     @media (max-width: 480px) {
-      .vmodal-close { top: -48px; right: 0; }
       body { padding-left: 26px; padding-right: 26px; padding-top: 52px; }
       .btn { padding: 16px 18px; }
       .headline, .headline h1, .headline p { text-align: center; }
@@ -350,7 +362,7 @@
   <!-- O que é -->
   <section class="about">
     <h2>O que é o Power Woman Experience?</h2>
-    <p>É um evento exclusivo para você que é aluna da Power Academy. Ele foi criado para que você empreendedora não se sinta sozinha — afinal, você vai estar junto de mais de 1500 empreendedoras que estão buscando estourar o teto assim como você.</p>
+    <p>É um evento exclusivo para você que é aluna da Power Academy. Ele foi criado para que você empreendedora não se sinta sozinha, afinal, você vai estar junto de mais de 1500 empreendedoras que estão buscando estourar o teto assim como você.</p>
     <p>Você vai ter acesso aos bastidores de tudo que fez com que eu me tornasse uma das maiores referências do mercado da beleza.</p>
     <p>Se você busca evolução, construção de carreira, crescimento empresarial e muito networking, o <strong>Power Woman Experience</strong> é pra você!</p>
   </section>
@@ -373,8 +385,8 @@
   <!-- Popup de vídeo -->
   <div class="vmodal" id="vmodal" role="dialog" aria-modal="true">
     <div class="vmodal-box">
+      <div class="vmodal-ratio" id="vmodalPlayer"></div>
       <button class="vmodal-close" id="vmodalClose" aria-label="Fechar">&times;</button>
-      <div id="vmodalPlayer"></div>
     </div>
   </div>
 
