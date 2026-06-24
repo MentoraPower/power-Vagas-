@@ -185,14 +185,15 @@
       width: 100%;
       max-width: 1080px;
       margin-top: clamp(28px, 5vw, 48px);
-      background: #0e0c0b;
-      background-image: radial-gradient(120% 120% at 50% 0%, #1c1714 0%, #0b0a09 70%);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 24px;
       padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 44px);
+      box-shadow: 0 10px 30px -18px rgba(40, 30, 10, .18);
     }
 
     .editions h2 {
-      color: #f4efe6;
+      color: var(--text);
       font-weight: 600;
       text-align: center;
       font-size: clamp(22px, 3.4vw, 32px);
@@ -220,12 +221,12 @@
       font-size: clamp(10px, 1.1vw, 12px);
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: #e7d3a3;
+      color: var(--gold-b);
       margin-bottom: 6px;
     }
 
     .ed-title {
-      color: #fff;
+      color: var(--text);
       font-weight: 600;
       font-size: clamp(17px, 2vw, 22px);
       line-height: 1.15;
@@ -238,10 +239,10 @@
       overflow: hidden;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 14px 34px -16px rgba(0, 0, 0, .8);
+      box-shadow: 0 12px 28px -18px rgba(40, 30, 10, .35);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .ed-card:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -16px rgba(0, 0, 0, .9); }
+    .ed-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(40, 30, 10, .45); }
 
     @media (max-width: 480px) {
       body { padding-left: 26px; padding-right: 26px; padding-top: 52px; }
@@ -249,6 +250,7 @@
       .headline, .headline h1, .headline p { text-align: center; }
       .editions-grid { grid-template-columns: 1fr; }
       .ed-card { aspect-ratio: 16 / 9; }
+      .editions h2 { max-width: 18ch; margin-left: auto; margin-right: auto; }
     }
   </style>
 </head>
