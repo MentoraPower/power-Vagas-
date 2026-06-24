@@ -104,7 +104,9 @@
       font-variant-numeric: tabular-nums;
     }
     .cd-unit {
-      font-size: clamp(11px, 1.6vw, 12px);
+      font-size: clamp(12px, 1.8vw, 13px);
+      font-weight: 600;
+      text-transform: uppercase;
       color: #a9a194;
     }
 
@@ -237,6 +239,17 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+    }
+
+    /* ── Divisor entre seções ───────────────────────────── */
+    .section-divider {
+      width: 100%;
+      max-width: 760px;
+      height: 2px;
+      background: var(--border);
+      border-radius: 999px;
+      box-shadow: 0 6px 14px -6px rgba(40, 30, 10, .22);
+      margin: clamp(36px, 6vw, 60px) auto 0;
     }
 
     /* ── Seção "O que é" ────────────────────────────────── */
@@ -374,9 +387,12 @@
     .vmodal-close:hover { background: rgba(0, 0, 0, .85); }
 
     @media (max-width: 480px) {
-      body { padding-left: 26px; padding-right: 26px; padding-top: 130px; }
+      body { padding-left: 26px; padding-right: 26px; padding-top: 104px; }
+      .navbar-inner { min-height: 70px; padding-top: 6px; padding-bottom: 6px; }
       .btn { padding: 16px 18px; }
       .headline, .headline h1, .headline p { text-align: center; }
+      .headline { padding-left: 1.35em; padding-right: 1.35em; }
+      .about { padding-left: 1.35em; padding-right: 1.35em; }
       .editions-grid { grid-template-columns: 1fr; }
       .ed-card { aspect-ratio: 16 / 9; }
       .editions h2 { max-width: 18ch; margin-left: auto; margin-right: auto; }
@@ -389,10 +405,10 @@
     <div class="navbar-inner">
       <span class="nav-label">Vagas encerram em</span>
       <div class="countdown" id="countdown" aria-label="Contagem regressiva">
-        <div class="cd-seg"><span class="cd-num" id="cdD">00</span><span class="cd-unit">dias</span></div>
-        <div class="cd-seg"><span class="cd-num" id="cdH">00</span><span class="cd-unit">horas</span></div>
-        <div class="cd-seg"><span class="cd-num" id="cdM">00</span><span class="cd-unit">min</span></div>
-        <div class="cd-seg"><span class="cd-num" id="cdS">00</span><span class="cd-unit">seg</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdD">00</span><span class="cd-unit">D</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdH">00</span><span class="cd-unit">H</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdM">00</span><span class="cd-unit">M</span></div>
+        <div class="cd-seg"><span class="cd-num" id="cdS">00</span><span class="cd-unit">S</span></div>
       </div>
     </div>
   </header>
@@ -432,6 +448,8 @@
 
     </section>
   </main>
+
+  <div class="section-divider"></div>
 
   <!-- O que é -->
   <section class="about">
