@@ -27,7 +27,7 @@
   <!-- Fonte Instrument Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -192,12 +192,12 @@
     }
 
     .editions h2 {
-      font-family: "Cormorant Garamond", Georgia, serif;
       color: #f4efe6;
-      font-weight: 500;
+      font-weight: 600;
       text-align: center;
-      font-size: clamp(26px, 4.4vw, 40px);
+      font-size: clamp(22px, 3.4vw, 32px);
       line-height: 1.2;
+      letter-spacing: -0.01em;
       margin-bottom: clamp(26px, 4vw, 40px);
     }
 
@@ -207,34 +207,13 @@
       gap: clamp(16px, 2.2vw, 24px);
     }
 
-    .ed-card {
-      position: relative;
-      display: block;
-      aspect-ratio: 16 / 10;
-      border-radius: 14px;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      text-decoration: none;
-      box-shadow: 0 14px 34px -16px rgba(0, 0, 0, .8);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .ed-card:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -16px rgba(0, 0, 0, .9); }
-
-    .ed-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(8,6,5,.15) 0%, rgba(8,6,5,.35) 55%, rgba(8,6,5,.85) 100%);
+    .ed-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .ed-content {
-      position: absolute;
-      left: clamp(16px, 2vw, 22px);
-      bottom: clamp(16px, 2vw, 22px);
-      z-index: 2;
-      max-width: 70%;
-    }
+    .ed-caption { text-align: center; }
 
     .ed-num {
       display: block;
@@ -242,32 +221,27 @@
       letter-spacing: .22em;
       text-transform: uppercase;
       color: #e7d3a3;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .ed-title {
-      font-family: "Cormorant Garamond", Georgia, serif;
       color: #fff;
-      font-weight: 500;
-      font-size: clamp(22px, 2.6vw, 30px);
-      line-height: 1.05;
+      font-weight: 600;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.15;
     }
 
-    .ed-play {
-      position: absolute;
-      z-index: 3;
-      right: clamp(16px, 2vw, 22px);
-      bottom: clamp(16px, 2vw, 22px);
-      width: clamp(40px, 4vw, 48px);
-      height: clamp(40px, 4vw, 48px);
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e7d3a3, var(--gold-b));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 16px -4px rgba(0, 0, 0, .6);
+    .ed-card {
+      display: block;
+      aspect-ratio: 16 / 10;
+      border-radius: 14px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 14px 34px -16px rgba(0, 0, 0, .8);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .ed-play svg { width: 42%; height: 42%; fill: #1a1409; margin-left: 2px; }
+    .ed-card:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -16px rgba(0, 0, 0, .9); }
 
     @media (max-width: 480px) {
       body { padding-left: 26px; padding-right: 26px; padding-top: 52px; }
@@ -317,32 +291,32 @@
   <section class="editions">
     <h2>Confira como foram as últimas edições:</h2>
     <div class="editions-grid">
-      <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" target="_blank" rel="noopener"
-         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_011.webp');">
-        <div class="ed-content">
+      <div class="ed-item">
+        <div class="ed-caption">
           <span class="ed-num">1 Edição</span>
-          <div class="ed-title">Power Woman<br>Experience</div>
+          <div class="ed-title">Power Woman Experience</div>
         </div>
-        <span class="ed-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-      </a>
+        <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" target="_blank" rel="noopener"
+           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_011.webp');"></a>
+      </div>
 
-      <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" target="_blank" rel="noopener"
-         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_022.webp');">
-        <div class="ed-content">
+      <div class="ed-item">
+        <div class="ed-caption">
           <span class="ed-num">2 Edição</span>
-          <div class="ed-title">Power Woman<br>Experience</div>
+          <div class="ed-title">Power Woman Experience</div>
         </div>
-        <span class="ed-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-      </a>
+        <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" target="_blank" rel="noopener"
+           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_022.webp');"></a>
+      </div>
 
-      <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" target="_blank" rel="noopener"
-         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_33.webp');">
-        <div class="ed-content">
+      <div class="ed-item">
+        <div class="ed-caption">
           <span class="ed-num">3 Edição</span>
-          <div class="ed-title">Power Woman<br>Experience</div>
+          <div class="ed-title">Power Woman Experience</div>
         </div>
-        <span class="ed-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-      </a>
+        <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" target="_blank" rel="noopener"
+           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_33.webp');"></a>
+      </div>
     </div>
   </section>
 </body>
