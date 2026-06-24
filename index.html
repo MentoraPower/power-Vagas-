@@ -180,10 +180,40 @@
       gap: 6px;
     }
 
+    /* ── Seção "O que é" ────────────────────────────────── */
+    .about {
+      width: 100%;
+      max-width: 760px;
+      margin-top: clamp(28px, 5vw, 48px);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(28px, 5vw, 48px) clamp(22px, 4vw, 44px);
+      box-shadow: 0 10px 30px -18px rgba(40, 30, 10, .18);
+    }
+
+    .about h2 {
+      text-align: center;
+      color: var(--text);
+      font-weight: 600;
+      font-size: clamp(22px, 3.4vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: clamp(15px, 2.2vw, 17px);
+      margin-bottom: 14px;
+    }
+    .about p:last-child { margin-bottom: 0; }
+    .about strong { color: var(--text); font-weight: 600; }
+
     /* ── Seção de edições ───────────────────────────────── */
     .editions {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1280px;
       margin-top: clamp(28px, 5vw, 48px);
       background: var(--card);
       border: 1px solid var(--border);
@@ -206,30 +236,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(16px, 2.2vw, 24px);
-    }
-
-    .ed-item {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .ed-caption { text-align: center; }
-
-    .ed-num {
-      display: block;
-      font-size: clamp(10px, 1.1vw, 12px);
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold-b);
-      margin-bottom: 6px;
-    }
-
-    .ed-title {
-      color: var(--text);
-      font-weight: 600;
-      font-size: clamp(17px, 2vw, 22px);
-      line-height: 1.15;
     }
 
     .ed-card {
@@ -259,7 +265,7 @@
     <!-- Cabeçalho -->
     <header class="headline">
       <h1>Inscrições <span class="accent">encerram em breve</span></h1>
-      <p>Ao entrar para a <strong>Power Academy</strong>, você leva junto um <strong>ingresso individual</strong> para o próximo Power Experience.</p>
+      <p>Comprando a <strong>Power Academy</strong> você leva um <strong>ingresso individual</strong> — com condição exclusiva para um 2º ingresso no próximo Power Woman Experience.</p>
     </header>
 
     <!-- Vídeo -->
@@ -289,36 +295,26 @@
     </section>
   </main>
 
+  <!-- O que é -->
+  <section class="about">
+    <h2>O que é o Power Woman Experience?</h2>
+    <p>É um evento exclusivo para você que é aluna da Formação Power Woman. Ele foi criado para que você empreendedora não se sinta sozinha — afinal, você vai estar junto de mais de 1500 empreendedoras que estão buscando estourar o teto assim como você.</p>
+    <p>Você vai ter acesso aos bastidores de tudo que fez com que eu me tornasse uma das maiores referências do mercado da beleza.</p>
+    <p>Se você busca evolução, construção de carreira, crescimento empresarial e muito networking, o <strong>Power Woman Experience</strong> é pra você!</p>
+  </section>
+
   <!-- Edições anteriores -->
   <section class="editions">
     <h2>Confira como foram as últimas edições:</h2>
     <div class="editions-grid">
-      <div class="ed-item">
-        <div class="ed-caption">
-          <span class="ed-num">1 Edição</span>
-          <div class="ed-title">Power Woman Experience</div>
-        </div>
-        <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" target="_blank" rel="noopener"
-           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_011.webp');"></a>
-      </div>
+      <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" target="_blank" rel="noopener"
+         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_011.webp');"></a>
 
-      <div class="ed-item">
-        <div class="ed-caption">
-          <span class="ed-num">2 Edição</span>
-          <div class="ed-title">Power Woman Experience</div>
-        </div>
-        <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" target="_blank" rel="noopener"
-           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_022.webp');"></a>
-      </div>
+      <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" target="_blank" rel="noopener"
+         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_022.webp');"></a>
 
-      <div class="ed-item">
-        <div class="ed-caption">
-          <span class="ed-num">3 Edição</span>
-          <div class="ed-title">Power Woman Experience</div>
-        </div>
-        <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" target="_blank" rel="noopener"
-           style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_33.webp');"></a>
-      </div>
+      <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" target="_blank" rel="noopener"
+         style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_33.webp');"></a>
     </div>
   </section>
 </body>
