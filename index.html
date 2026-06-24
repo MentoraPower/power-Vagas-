@@ -183,29 +183,27 @@
     /* ── Seção "O que é" ────────────────────────────────── */
     .about {
       width: 100%;
-      max-width: 760px;
+      max-width: 1280px;
       margin-top: clamp(28px, 5vw, 48px);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: clamp(28px, 5vw, 48px) clamp(22px, 4vw, 44px);
-      box-shadow: 0 10px 30px -18px rgba(40, 30, 10, .18);
+      padding: clamp(8px, 2vw, 20px) 0;
     }
 
     .about h2 {
       text-align: center;
       color: var(--text);
       font-weight: 600;
-      font-size: clamp(22px, 3.4vw, 30px);
+      font-size: clamp(22px, 3.4vw, 32px);
       line-height: 1.2;
       letter-spacing: -0.01em;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .about p {
       color: var(--muted);
       font-size: clamp(15px, 2.2vw, 17px);
-      margin-bottom: 14px;
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto 14px;
     }
     .about p:last-child { margin-bottom: 0; }
     .about strong { color: var(--text); font-weight: 600; }
@@ -250,7 +248,61 @@
     }
     .ed-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(40, 30, 10, .45); }
 
+    /* ── Popup de vídeo ─────────────────────────────────── */
+    .vmodal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(10, 8, 6, .82);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .vmodal.open { opacity: 1; visibility: visible; }
+
+    .vmodal-box {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8);
+      transform: scale(.96);
+      transition: transform .25s ease;
+    }
+    .vmodal.open .vmodal-box { transform: scale(1); }
+
+    .vmodal-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    .vmodal-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #1a1409;
+      font-size: 22px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px -4px rgba(0, 0, 0, .6);
+    }
+
     @media (max-width: 480px) {
+      .vmodal-close { top: -48px; right: 0; }
       body { padding-left: 26px; padding-right: 26px; padding-top: 52px; }
       .btn { padding: 16px 18px; }
       .headline, .headline h1, .headline p { text-align: center; }
@@ -265,7 +317,7 @@
     <!-- Cabeçalho -->
     <header class="headline">
       <h1>Inscrições <span class="accent">encerram em breve</span></h1>
-      <p>Comprando a <strong>Power Academy</strong> você leva um <strong>ingresso individual</strong> — com condição exclusiva para um 2º ingresso no próximo Power Woman Experience.</p>
+      <p>Comprando a <strong>Power Academy</strong> você leva um <strong>ingresso individual</strong>, com condição exclusiva para um 2º ingresso no próximo Power Woman Experience.</p>
     </header>
 
     <!-- Vídeo -->
@@ -298,7 +350,7 @@
   <!-- O que é -->
   <section class="about">
     <h2>O que é o Power Woman Experience?</h2>
-    <p>É um evento exclusivo para você que é aluna da Formação Power Woman. Ele foi criado para que você empreendedora não se sinta sozinha — afinal, você vai estar junto de mais de 1500 empreendedoras que estão buscando estourar o teto assim como você.</p>
+    <p>É um evento exclusivo para você que é aluna da Power Academy. Ele foi criado para que você empreendedora não se sinta sozinha — afinal, você vai estar junto de mais de 1500 empreendedoras que estão buscando estourar o teto assim como você.</p>
     <p>Você vai ter acesso aos bastidores de tudo que fez com que eu me tornasse uma das maiores referências do mercado da beleza.</p>
     <p>Se você busca evolução, construção de carreira, crescimento empresarial e muito networking, o <strong>Power Woman Experience</strong> é pra você!</p>
   </section>
@@ -307,15 +359,56 @@
   <section class="editions">
     <h2>Confira como foram as últimas edições:</h2>
     <div class="editions-grid">
-      <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" target="_blank" rel="noopener"
+      <a class="ed-card" href="https://youtu.be/oaaC6roNVlE" data-yt="oaaC6roNVlE"
          style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_011.webp');"></a>
 
-      <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" target="_blank" rel="noopener"
+      <a class="ed-card" href="https://youtu.be/HeV9qcKTeWE" data-yt="HeV9qcKTeWE"
          style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_022.webp');"></a>
 
-      <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" target="_blank" rel="noopener"
+      <a class="ed-card" href="https://youtu.be/JlWDA82zNxo" data-yt="JlWDA82zNxo"
          style="background-image: url('https://biteti.com.br/wp-content/uploads/2025/04/edicao_33.webp');"></a>
     </div>
   </section>
+
+  <!-- Popup de vídeo -->
+  <div class="vmodal" id="vmodal" role="dialog" aria-modal="true">
+    <div class="vmodal-box">
+      <button class="vmodal-close" id="vmodalClose" aria-label="Fechar">&times;</button>
+      <div id="vmodalPlayer"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var modal = document.getElementById("vmodal");
+      var player = document.getElementById("vmodalPlayer");
+      var closeBtn = document.getElementById("vmodalClose");
+
+      function open(id) {
+        player.innerHTML =
+          '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+          '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        modal.classList.remove("open");
+        player.innerHTML = "";
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".ed-card[data-yt]").forEach(function (card) {
+        card.addEventListener("click", function (e) {
+          e.preventDefault();
+          open(card.getAttribute("data-yt"));
+        });
+      });
+
+      closeBtn.addEventListener("click", close);
+      modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    })();
+  </script>
 </body>
 </html>
