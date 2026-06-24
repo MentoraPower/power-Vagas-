@@ -57,7 +57,7 @@
       flex-direction: column;
       align-items: center;
       padding: clamp(20px, 5vw, 56px) 18px;
-      padding-top: 84px;
+      padding-top: 108px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -82,7 +82,7 @@
       align-items: center;
       justify-content: center;
       gap: clamp(10px, 2vw, 18px);
-      padding: 10px 16px;
+      padding: 15px 16px;
       flex-wrap: wrap;
     }
 
@@ -93,31 +93,19 @@
       letter-spacing: .01em;
     }
 
-    .countdown { display: flex; align-items: center; gap: 6px; }
+    .countdown { display: flex; align-items: baseline; gap: clamp(8px, 1.6vw, 14px); }
 
-    .cd-seg {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: rgba(231, 211, 163, .1);
-      border: 1px solid rgba(231, 211, 163, .16);
-      border-radius: 9px;
-      padding: 4px 8px;
-      min-width: 40px;
-    }
+    .cd-seg { display: inline-flex; align-items: baseline; gap: 4px; }
     .cd-num {
-      font-size: clamp(15px, 2.4vw, 18px);
+      font-size: clamp(16px, 2.4vw, 19px);
       font-weight: 700;
       color: #f0d9a0;
       line-height: 1;
       font-variant-numeric: tabular-nums;
     }
     .cd-unit {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+      font-size: clamp(11px, 1.6vw, 12px);
       color: #a9a194;
-      margin-top: 3px;
     }
 
     .wrapper {
@@ -386,7 +374,7 @@
     .vmodal-close:hover { background: rgba(0, 0, 0, .85); }
 
     @media (max-width: 480px) {
-      body { padding-left: 26px; padding-right: 26px; padding-top: 96px; }
+      body { padding-left: 26px; padding-right: 26px; padding-top: 112px; }
       .btn { padding: 16px 18px; }
       .headline, .headline h1, .headline p { text-align: center; }
       .editions-grid { grid-template-columns: 1fr; }
